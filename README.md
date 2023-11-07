@@ -1,1 +1,0 @@
-# c-Ba-lang-D-zey-Banka-uygulamas-

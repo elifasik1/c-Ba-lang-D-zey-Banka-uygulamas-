@@ -1,0 +1,136 @@
+# c-Ba-lang-D-zey-Banka-uygulamas-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bankaUygulaması
+
+{
+    internal class Program
+    {
+        public static void yenihesap()
+        {
+            silme();
+            string ad;
+            string soyAd;
+            Console.Write("Lütfen adınızı ve soyadınızı giriniz:");
+            ad = Console.ReadLine();
+            soyAd = Console.ReadLine();
+            int yas;
+            Console.WriteLine("Lütfen yaşınızı giriniz: ");
+            yas = Convert.ToInt32(Console.ReadLine());
+            if(yas >= 18)
+            {
+                Console.WriteLine("Lutfen TC giriniz");
+                string tc;
+                tc = Console.ReadLine();
+                Console.WriteLine("Hesabınız başarı ile açılmıştır \nLütfen bir şifre belirleyiniz");
+                string sifre;
+                sifre = Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine("**********");
+                Console.WriteLine("Kullanıcı bilgileriniz: \nAd-Soyad: "+ad+"-"+soyAd+"\nSifre:"+sifre);
+                Console.WriteLine("**********");
+            }
+            else
+            {
+                Console.WriteLine("Yaşınız hesap sahibi olmak için gereken koşulu saglamıyor");
+            }
+        }
+        public static void musteriGirisi()
+        {
+            silme();
+            Console.WriteLine("Lütfen Tc ve Sifre bilgilerinizi giriniz:");
+            string tc, sifre;
+            tc = Console.ReadLine();
+            sifre = Console.ReadLine();
+            silme();
+            Console.WriteLine("Başarılı bir şekilde giriş yaptınız\nLütfen yapmak istediginiz işlemi seçiniz:");
+            Console.WriteLine("1-Şifre yenileme");
+            Console.WriteLine("2-Para çekme");
+            Console.WriteLine("3-Para yatırma");
+            int islem;
+            islem = Convert.ToInt32(Console.ReadLine());
+            string yeniSifre,yeniSifre2,eskiSifre;
+            int tutar,tutar2;
+            switch(islem)
+            {
+                case 1:
+                    Console.WriteLine("Lütfen eski şifrenizi giriniz");
+                    eskiSifre = Console.ReadLine();
+                    if(sifre==eskiSifre)
+                    {
+                           Console.WriteLine("Belirlemek istediginiz sifreyi giriniz:");
+                    yeniSifre = Console.ReadLine();
+                    Console.WriteLine("Şifreyi onaylamak için tekrar giriniz:");
+                    yeniSifre2 = Console.ReadLine(); 
+                        Console.WriteLine("Şifreniz başarılı bir şekilde yenilenmiştir:");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Hatalı Şifre girişi");
+                    }
+                                  
+                    break;
+                case 2:
+                    Console.WriteLine("Lütfen çekmek istediginiz tutarı giriniz:");
+                    tutar = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Paranız başarılı bir şekilde çekilmiştir iyi günler");
+                    break;
+                case 3:
+                    Console.WriteLine("Lütfen yatırmak istediginiz tutarı giriniz:");
+                    tutar2 = Convert.ToInt32(Console.ReadLine());
+                    Console.Write("Paranız başarılı bir şekilde yatırılmıştır iyi günler");
+                    break;
+                default:
+                    Console.WriteLine("Yanlış tuşlama yaptınız");
+                    break;
+            }
+           
+        }
+        public static void islem()
+        {
+            Console.WriteLine("Müşteri sistemine hoşgeldiniz");
+            Console.WriteLine("Yapmak istediginiz işlemi seçiniz");
+            Console.WriteLine("1-Yeni hesap oluşturma");
+            Console.WriteLine("2-Müşteri girişi");
+            int secim;
+            secim = Convert.ToInt32(Console.ReadLine());
+            
+            switch(secim)
+            {
+                case 1:
+                    yenihesap();
+                    break;
+                case 2:
+                    musteriGirisi();
+                    break;
+                default:
+                    Console.WriteLine("Hatalı giriş yaptınız");
+                    break;
+
+            }
+        
+
+        }
+        public static void silme()
+        {
+            Console.Clear();
+        }
+
+
+        static void Main(string[] args)
+        {
+            //Müşteri girişi
+            islem();
+
+
+            Console.Read();
+
+        }
+    }
+}
